@@ -1,0 +1,76 @@
+if game.PlaceId == 3177438863 then
+   
+   ---Load
+    local OrionLib = loadstring(game:HttpGet(('https://raw.githubusercontent.com/shlexware/Orion/main/source')))()
+
+    --main
+    local Window = OrionLib:MakeWindow({Name = "Crsxz HUB", HidePremium = false, SaveConfig = true, ConfigFolder = "CrsxzCFG", IntroEnabled = false})
+
+    --Valor
+    _G.AutoAtk = true 
+    _G.AutoEnergy = true
+
+    --Funçao
+    function AutoAtk()
+    while _G.AutoAtk == true do
+        local args = {
+            [1] = {
+                ["Camera"] = CFrame.new(1985.5459, 996.35083, -2987.05518, -0.953729689, -0.0458621792, -0.297147214, 0, 0.988297999, -0.152535483, 0.300665647, -0.145477623, -0.942569017),
+                ["SkillId"] = "1",
+                ["Began"] = true,
+                ["CFrame"] = CFrame.new(1991.41455, 997.843384, -2968.43945, -0.664377749, 1.99493826e-08, -0.747396946, -2.665581e-08, 1, 5.03867597e-08, 0.747396946, 5.33983133e-08, -0.664377749),
+                ["Typ\208\181"] = 1,
+                ["Aim"] = Vector3.new(4405.60400390625, 1452.0382080078125, 6705.09033203125)
+            }
+        }
+        
+        game:GetService("ReplicatedStorage"):WaitForChild("Remotes"):WaitForChild("SkillRemote"):FireServer(unpack(args))
+        wait(0.00001)
+    end
+end
+    function AutoEnergy()
+    while _G.AutoEnergy == true do
+        local args = {
+            [1] = {
+                ["Camera"] = CFrame.new(1676.78784, 594.212036, -2894.00952, -0.32653898, 0.273613334, -0.904714346, 7.4505806e-09, 0.957183599, 0.28948164, 0.945183754, 0.0945270285, -0.312557757),
+                ["SkillId"] = "101",
+                ["Began"] = true,
+                ["CFrame"] = CFrame.new(1688.0968, 589.073486, -2890.10254, 0.625816464, -3.57321395e-09, 0.779970348, 1.18568835e-08, 1, -4.93226304e-09, -0.779970348, 1.23347093e-08, 0.625816464),
+                ["Typ\208\181"] = 1,
+                ["Aim"] = Vector3.new(1719.837158203125, 586.0405883789062, -2888.6708984375)
+            }
+        }
+        
+        game:GetService("ReplicatedStorage"):WaitForChild("Remotes"):WaitForChild("SkillRemote"):FireServer(unpack(args))
+        wait(0.00001)
+        
+    end 
+end
+
+    -- Player
+    local JogadorTab = Window:MakeTab({
+        Name = "Jogador",
+        Icon = "rbxassetid://4483345998",
+        PremiumOnly = false
+    })
+    local Section = JogadorTab:AddSection({
+        Name = "Auto-Farm"
+    })
+    JogadorTab:AddToggle({
+        Name = "Auto Attack",
+        Default = false,
+        Callback = function(Value)
+            _G.AutoAtk = Value
+            AutoAtk()
+        end    
+    })
+    JogadorTab:AddToggle({
+        Name = "Auto Energy",
+        Default = false,
+        Callback = function(Value)
+            _G.AutoEnergy = Value
+            AutoEnergy()
+        end    
+    })
+
+end
